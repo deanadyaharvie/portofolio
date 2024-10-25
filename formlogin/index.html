@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deaaanh</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form">
+            <div class="title">
+                Login User
+            </div>
+
+            <form action="" method="post" id="submit_form">
+                <div class="input_wrap">
+                    <label for="input_text">Email or Username</label>
+                    <div class="input_field">
+                        <input type="text" class="input" id="input_text">
+                    </div>
+                </div>
+
+                <div class="input_wrap">
+                    <label for="input_password">Password</label>
+                    <div class="input_field">
+                        <input type="password" class="input" id="input_password">
+                    </div>
+                </div>
+
+                <div class="input_wrap">
+                    <span class="error_msg">Username atau Password salah, ulangi lagi.</span>
+                    <input type="submit" value="Login" class="btn" id="login_btn">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var input_text = document.querySelector('#input_text');
+        var input_password = document.querySelector("#input_password");
+        var error_msg = document.querySelector(".error_msg");
+        var form = document.querySelector("#submit_form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if(input_text.value.length < 1) {
+                error_msg.style.display = "inline-block";
+                input_text.style.border = "1px solid #f74040";
+                return false;
+            }
+
+            if (input_password.value.length<1){
+                error_msg.style.display="inline-block";
+                input_password.style.border="1px solid #f74040";
+                return false;
+            }
+
+            error_msg.style.display="none";
+            alert("Login Successfully");
+        });
+
+        var input_fields = document.querySelectorAll(".input");
+
+        input_fields.forEach(function (input_item) {
+            input_item.addEventListener("input", function () {
+                if (input_item.value.length > 0) {
+                    input_item.style.border = "1px solid #1dbf73";
+                } else {
+                    input_item.style.border = "1px solid #f74040";
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
